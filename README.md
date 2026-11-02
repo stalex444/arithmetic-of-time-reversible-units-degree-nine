@@ -1,4 +1,4 @@
-# Reversible units of a degree-nine field
+# The Arithmetic of Time: reversible units of a degree-nine field
 
 Kernel-checked, in Lean 4 + Mathlib: in every number field `K` of degree 9 that contains a totally
 real cubic field `L` and a cubic field `M` with one real place, the units whose nine conjugates form
@@ -72,17 +72,71 @@ conjugates on the unit circle), concern different conjugate patterns.
 - The registered entry PALOMAR-2026-10-21-000012 supplies the compositum place bookkeeping
   (`restrictPair`, `embeddingsEquiv`, `places_compositum`), ported and cited, not re-proved.
 
-## Application (cited, not a claim of the entry)
+## Application to time (a reading of the theorems; no compared statement asserts it)
 
-Read a unit as a step acting by multiplication on a Hermitian register of its places, and require
-an admissible step to be completely positive. Then statement 10 says that in the degree-four shape a
-step `u ≠ 1` can run both ways only through a conjugate on the unit circle. In a field such as
+In the arithmetic of time (the companion entry below), the tick is multiplication by a unit (in the
+companion, multiplication by `ρ` on `ℚ(ρ)`; here, by units of a quartic or a degree-nine field).
+Read a unit as a tick acting by multiplication on a Hermitian register of its places, and require
+an admissible tick to be completely positive. Then statement 10 says that in the degree-four shape a
+tick `u ≠ 1` can run both ways only through a conjugate on the unit circle. In a field such as
 `ℚ(Q)`, `Q⁴ = Q + 1`, the only such elements are `±1` (not proved in this entry; it follows from
 statement 17 of the registered entry PALOMAR-2026-10-21-000012, since `ℚ(Q) ⊆ ℚ(ρ, Q)`). So there
 every totally positive unit `u ≠ 1` runs exactly one way (statement 10 with the library's
-`unit_one_direction_xor`). Statements 6–9 say that in the degree-nine shape a rank-two group of units
-runs both ways. The steps are completely positive, not trace-non-increasing. The cubic field `ℚ(ρ)`,
-`ρ³ = ρ + 1`, can serve as the factor `M`.
+`unit_one_direction_xor`): the arithmetic gives time a direction. Statements 6–9 show that it is not
+a property of arithmetic in general: in every degree-nine compositum of this kind a rank-two group of
+units runs both ways, whereas in the degree-four shape a two-way tick needs a conjugate on the unit
+circle (statement 10), which `ℚ(Q)` lacks. The ticks are completely positive, not
+trace-non-increasing. The cubic field `ℚ(ρ)`, `ρ³ = ρ + 1`, can serve as the factor `M` (`ρ` itself
+is not in `H`: `N_{K/M}(ρ) = ρ³ ≠ 1`, so by statement 8 it does not run both ways).
+
+## Companion entry
+
+This entry is a companion of the registered entry PALOMAR-2026-08-19-000006,
+[stalex444/arithmetic-of-time](https://github.com/stalex444/arithmetic-of-time), whose compared
+statements include the chirality of the Padovan substitution: in its iterates `ca` occurs and `ac`
+does not, so the settled history read backwards is a different object. That entry gives the arrow at
+the level of the settled word; this one gives it at the level of the tick in `ℚ(Q)`, as complete
+positivity in one direction only (Application to time, above), and shows it is not forced by
+arithmetic in general: in the degree-nine shape a rank-two group of units runs both ways. The other registered arrow entries are
+PALOMAR-2026-09-04-000004
+([stalex444/chiral-padovan-histories](https://github.com/stalex444/chiral-padovan-histories)) and
+PALOMAR-2026-10-18-000019
+([stalex444/arithmetic-of-time-slowest-clock](https://github.com/stalex444/arithmetic-of-time-slowest-clock)).
+No statement is shared with them, and no module is.
+
+## Scope: the claim
+
+The Scope of the companion entry applies to this one unchanged. It is reproduced verbatim below from
+that entry's README (its one relative link, to the paper directory, now points into the companion
+repository); the declarations and files it names are in the companion repository at its registered
+revision
+[`c48eb12`](https://github.com/stalex444/arithmetic-of-time/tree/c48eb12817dd1d7ff3dc4d92306c7a4f249e6d7d),
+not in this one.
+
+The position taken here is that **time is this arithmetic** — an identity, in
+the same grammar as "heat is molecular motion," and earned the same way: by
+coverage. The temporal invariants are, one by one, theorems of a single
+structure. The tick is multiplication by a unit, and its contraction rate is
+exact (`Time.tick_contraction`). The tick never repeats (the rotation is
+irrational, `Time.aperiodic`), yet is never random (the word is balanced,
+`Time.balanced`). And the settled history is *handed*: read backwards, it is
+provably a different object — not by convention, but by theorem
+(`Chirality.lean`). On this reading the history is one completed object; the
+asymmetry of time is a property of the whole; and nothing needs to orient a
+flow, because nothing flows — the "now" is where an observer sits in the
+structure, with records on one side (the marked origin of
+`OriginDefect.lean`).
+
+Two kinds of statement appear in this repository, and the boundary between
+them is kept explicit. **Theorems**: every mathematical claim in the Lean
+modules compiles in the kernel; nothing rests on trust. **The
+identification**: that physical time is this structure — rather than merely
+being described by it — is an identification, the same kind of statement as
+"the metric tensor is spacetime geometry." No experiment distinguishes an
+exact description from an identity, so this is not a claim any theorem could
+settle; it is validated the way every physical identification is validated,
+through the measured consequences of the framework it belongs to (see [`paper/`](https://github.com/stalex444/arithmetic-of-time/tree/c48eb12817dd1d7ff3dc4d92306c7a4f249e6d7d/paper) and the companion deposits, e.g. doi:10.5281/zenodo.20417378). The mathematics stands regardless. The claim is which
+thing it is.
 
 ## Building
 
@@ -109,5 +163,6 @@ build record, axiom audit and statement-identity checks are in `BUILD.txt`.
 - `DefinitionAudit.lean`: kernel checks of the facts the definitions rely on.
 - `comparator.json`, `formalization.yaml`, `BUILD.txt`: the comparator configuration, the registry
   metadata, and the build record.
+- `.github/workflows/palomar-preflight.yml`: the registry's mechanical preflight, run on demand.
 
 License: MIT. Author: Stephanie Alexander.

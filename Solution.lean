@@ -183,7 +183,7 @@ theorem rankOne_iff_relNorm_eq_ratCast {K : Type*} [Field K] [NumberField K]
   obtain rfl := eq_slotEquiv hL hM hK hMr lab μ₁ hμ₁ he
   exact ReversibleUnits.rankOne_iff_norm_eq_ratCast hL hM hK hMr lab μ₁ hμ₁ x hx
 
-/-- **6.** Rank-one symbols of units: trivial relative norms to both cubic subfields. -/
+/-- **6.** Rank-one symbols of units: trivial relative norms to `L` and to `M`. -/
 theorem unit_rankOne_iff {K : Type*} [Field K] [NumberField K] {L M : IntermediateField ℚ K}
     (hL : finrank ℚ L = 3) (hM : finrank ℚ M = 3) (hK : finrank ℚ K = 9) [IsTotallyReal L]
     (hMr : nrRealPlaces M = 1) (lab : Fin 3 ≃ (L →+* ℂ)) (μ₁ : M →+* ℂ)

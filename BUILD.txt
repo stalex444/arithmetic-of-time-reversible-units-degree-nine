@@ -39,8 +39,9 @@ IsSlotAssignment)
 Comparator
   lake comparator --inadvisably-no-sandbox (toolchain bin with nanoda_bin on PATH), from the package root:
     "nanoda kernel accepts the solution / Lean default kernel accepts the solution / Your solution is okay!",
-    exit 0 (re-run 2026-11-02 after the last docstring edits to Challenge.lean, HadamardInverse.lean and
-    NTwo.lean; docstring-only changes, no statement or proof changed).
+    exit 0 (re-run 2026-11-02 after the last docstring edits to Challenge.lean, Solution.lean,
+    HadamardInverse.lean and NTwo.lean; docstring-only changes, no statement or proof changed; full
+    lake build re-run, 8942 jobs).
   Registry stages replicated on a fresh copy: Challenge compiled under a canonical alias (10 sorry warnings,
     0 errors); --src-deps: 3 sources (mathlib 1, toolchain 2), none untrusted; leanexport on 47 targets;
     submitted config accepted, exit 0; protected config "con-ron: accepted 68793 declarations (--verified) /
@@ -48,6 +49,14 @@ Comparator
   Not run: the registry's verify_submission.py target selection (not on this machine); no bubblewrap sandbox
     on macOS (hence --inadvisably-no-sandbox).
   The author's entry checker (count gate, surface agreement): no failures.
+  Registry metadata validator (PalomarSubmission scripts/submission_contract.py load_formalization_metadata,
+    at pipeline commit 14aa8d6b3c2f14a8540605e37144560b9a00e7e7, the latest on 2026-11-02): formalization.yaml
+    accepted. (It first rejected the yaml for lacking an original-proof source and for a project name over 300
+    characters; both corrected.)
+  Preflight workflow: .github/workflows/palomar-preflight.yml, dispatch-only, pinned to the same pipeline
+    commit (uses == pipeline_commit), request_id revunitsdeg9 (12 lowercase alphanumerics), profile
+    palomar-standard-v1; identical to the registered entry PALOMAR-2026-10-18-000019's workflow apart from the
+    pin and the id. The full preflight needs the public commit and has not run.
 
 Module provenance
   ReversibleUnits/Compositum.lean, section Ported: restrictPair, restrictPair_injective,
@@ -70,8 +79,8 @@ Module provenance
     entry.
 
 Files (sha256)
-  f127257ded0b9248a5e7b4527d0b7a14c8eec34f9ecace5479eefd21c69b05ce  Challenge.lean
-  8fdae28e79d9eab4f0abfaf9163835fbb48a8045ee8a8411608011b7c2e58792  Solution.lean
+  9743dbba3952e10a9652a1f616eae1315df42e9fe6815ad6420d659297f5b290  Challenge.lean
+  2b87758335a258a2f8c087b54476fc931d6299b383f16d5b263789cda5c51899  Solution.lean
   40c6a007c76b7ee2659691b3ff44b305355cce704cd2e49e134a454649d34ccb  DefinitionAudit.lean
   5769f6ec4422d7b8cdb10d7a95b0c4aa2846a850e3810403a3c2a46121ef1f5b  ReversibleUnits.lean
   04b0a7190d4014f9f6ed4dc5fc70490fc08d2ca6cd86432813dd5afb9a6c358b  ReversibleUnits/Compositum.lean

@@ -66,14 +66,17 @@ fidelity note in `formalization.yaml`); the four definitions below (`IsPositiveM
 verbatim. Every statement here is left unproved as a placeholder; `Solution.lean` proves each, with
 the identical statement.
 
-Application, cited and not a claim of the entry: in a physical reading in which a unit acts by
-multiplication on a Hermitian place register and an admissible step must be completely positive,
-statement 10 says that in degree four a step `u ≠ 1` runs both ways only through a conjugate on the
-unit circle (Salem type); in a field such as `ℚ(Q)`, `Q⁴ = Q + 1`, the only such elements are `±1`
-(not proved in this entry; it follows from statement 17 of the registered entry
-PALOMAR-2026-10-21-000012, since `ℚ(Q) ⊆ ℚ(ρ, Q)`). Statements 6–9 say that in degree nine, in the
-shape `(3, 3)`, a rank-two group of units runs both ways. The steps are completely positive, not
-trace-non-increasing.
+Application to time (no compared statement asserts it): in the arithmetic of time (this entry is a
+companion of the registered entry PALOMAR-2026-08-19-000006) the tick is multiplication by a unit.
+If a unit acts by multiplication on a Hermitian place register and an admissible tick must be
+completely positive, statement 10 says that in degree four a tick `u ≠ 1` runs both ways only
+through a conjugate on the unit circle (Salem type); in a field such as `ℚ(Q)`, `Q⁴ = Q + 1`, the
+only such elements are `±1` (not proved in this entry; it follows from statement 17 of the
+registered entry PALOMAR-2026-10-21-000012, since `ℚ(Q) ⊆ ℚ(ρ, Q)`), so there the arithmetic gives
+time a direction. Statements 6–9 say that in degree nine, in the shape `(3, 3)`, a rank-two group of
+units runs both ways: the direction is not a property of arithmetic in general; in degree four it
+rests on the shape together with the absence of unit-circle conjugates in `ℚ(Q)`. The ticks are
+completely positive, not trace-non-increasing.
 -/
 
 open Matrix ComplexConjugate NumberField NumberField.InfinitePlace NumberField.ComplexEmbedding
@@ -147,7 +150,7 @@ theorem rankOne_iff_relNorm_eq_ratCast {K : Type*} [Field K] [NumberField K]
         Algebra.norm M x = algebraMap ℚ M c := by
   sorry
 
-/-- **6.** Rank-one symbols of units: trivial relative norms to both cubic subfields. -/
+/-- **6.** Rank-one symbols of units: trivial relative norms to `L` and to `M`. -/
 theorem unit_rankOne_iff {K : Type*} [Field K] [NumberField K] {L M : IntermediateField ℚ K}
     (hL : finrank ℚ L = 3) (hM : finrank ℚ M = 3) (hK : finrank ℚ K = 9) [IsTotallyReal L]
     (hMr : nrRealPlaces M = 1) (lab : Fin 3 ≃ (L →+* ℂ)) (μ₁ : M →+* ℂ)
