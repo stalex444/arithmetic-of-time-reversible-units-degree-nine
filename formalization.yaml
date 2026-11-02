@@ -355,9 +355,8 @@ review:
     comparator was run locally (BUILD.txt); an in-house adversarial review
     (AI-assisted: Anthropic Claude, in Claude Code, under the author's
     direction) was applied to the statements before proving and to this
-    surface before submission. PENDING: the author's own review of the
-    statements against the informal claims (to be recorded here before
-    submission).
+    surface before submission. The author reviewed the ten compared
+    statements against their informal descriptions on 2026-11-02.
 
 alignment:
   namespace: "DegreeNine"
