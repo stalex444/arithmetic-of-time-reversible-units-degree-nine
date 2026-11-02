@@ -1,0 +1,368 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# A new entry; not a revision of any registered entry.
+version: "v0.4"
+
+project:
+  name: "Reversible units of a degree-nine field: in K = LM (L totally real cubic, M cubic with one real place) the units with rank-one Hermitian symbol are exactly the units of trivial relative norm to L and M, a group of rank two, and exactly those whose Schur multipliers run both ways"
+  description: >-
+    Kernel-checked proofs, in Lean 4 + Mathlib, of ten statements. Let K
+    be a number field of degree 9 containing a totally real cubic field L
+    and a cubic field M with one real place. Then K = LM has signature
+    (3, 3), and its nine embeddings are the pairs (lambda, mu). A slot
+    assignment, fixed by a labelling of L's embeddings and a non-real
+    embedding mu_1 of M, places the nine conjugates of x in K in a 3 x 3
+    Hermitian array, the symbol of x; the symbol of x^-1 is its entrywise
+    (Hadamard) inverse. (1) For every finite index type, a positive
+    semidefinite complex matrix with no zero entry has positive
+    semidefinite Hadamard inverse iff it is w w* (rank one); (2) for every
+    complex matrix with no zero entry (positive semidefiniteness not
+    assumed), the Schur multipliers of the matrix and of its Hadamard
+    inverse are both completely positive iff it is w w*. Statements 1-2
+    are supporting lemmas. (3) The setting: L and M are
+    linearly disjoint, L M = K, and K has 3 real and 3 complex places.
+    (4) The slot assignment exists, is a bijection Fin 3 x Fin 3 ~ (K ->
+    C) with real diagonal and conjugate-symmetric slots, and is unique.
+    (5) For x != 0 in K, the symbol of x is rank one iff N_{K/L}(x) and
+    N_{K/M}(x) are one and the same positive rational number. (6) For a
+    unit u, the symbol is rank one iff N_{K/L}(u) = N_{K/M}(u) = 1. (7)
+    These units H are torsion-free and their logarithmic embedding spans
+    a Z-module of rank 2, so H is isomorphic to Z^2 (the isomorphism is not
+    itself a Lean term). (8) For a unit u, the
+    Schur multipliers of the symbols of u and of u^-1 are both completely
+    positive iff u is in H. (9) There is a unit of infinite order all of
+    whose powers run both ways. (10) The degree-four contrast: in a field
+    with two real places and one complex place, both Schur multipliers of
+    the 2 x 2 place symbol of a unit u and of u^-1 are completely positive
+    iff u is positive at both real places and |sigma(u)| = 1. Statements
+    4-6, 8 and 9 hold for every labelling and every non-real mu_1. The compositum
+    place bookkeeping is ported, with citation, from the registered entry
+    PALOMAR-2026-10-21-000012; it is not re-proved. Application, cited
+    and not a claim of the entry: if a unit acts by multiplication on a
+    Hermitian register of its places and an admissible step must be
+    completely positive, then in degree four a step u != 1 runs both ways
+    only through a conjugate on the unit circle (Salem type); in a field
+    such as Q(Q), Q^4 = Q + 1, the only such elements are +-1 (not proved
+    in this entry; it follows from statement 17 of the registered entry
+    PALOMAR-2026-10-21-000012, since Q(Q) is contained in Q(rho, Q)). In
+    degree nine a rank-two group of units runs both ways. The steps are
+    completely positive, not trace-non-increasing.
+  authors:
+    - "Stephanie Alexander"
+  license: "MIT"
+  responsible_maintainers:
+    - "Stephanie Alexander"
+
+classification:
+  # math.NT / 11R27, 11R16, 11R06: units of number fields, cubic fields,
+  # Salem-type conjugates (statements 3-10). math.OA and math.RA / 15B48:
+  # positive semidefinite matrices, Hadamard inverses and Schur
+  # multipliers (statements 1-2, 8-10). quant-ph and math-ph / 81P47:
+  # complete positivity is the positivity condition on quantum operations
+  # (which are in addition trace-non-increasing; the maps here are CP but
+  # not trace-normalized), and the README's application section states the
+  # physical reading as a cited application.
+  arxiv: ["math.NT", "math.OA", "math.RA", "quant-ph", "math-ph"]
+  msc2020: ["11R27", "11R16", "11R06", "15B48", "47B49", "81P47"]
+
+sources:
+  - title: "Completely Bounded Maps and Operator Algebras"
+    authors:
+      - "Vern Paulsen"
+    id: "Cambridge Studies in Advanced Mathematics 78, Cambridge University Press (2002)"
+    # DOI of the online edition 10.1017/CBO9780511546631 (2003); Thm 3.7 locator confirmed by citing
+    # papers (Arhancet arXiv:1910.14434); chapter not opened.
+    type: "book"
+    location: "https://doi.org/10.1017/CBO9780511546631"
+    relationship: "builds-on"
+    note: >-
+      Theorem 3.7: the Schur multiplier X -> S ⊙ X is completely positive
+      iff S is positive semidefinite. Proved in the entry's library
+      (ReversibleUnits.isCPSchur_iff_posSemidef) and used in statements 2,
+      8, 9 and 10. Classical; no novelty claimed for it.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Hadamard inverses, square roots and products of almost semidefinite matrices"
+    authors:
+      - "Robert Reams"
+    id: "Linear Algebra and its Applications 288 (1999), 35-43"
+    # Crossref-verified 2026-11-02: DOI 10.1016/S0024-3795(98)10162-3. Content not read.
+    type: "article"
+    location: "https://doi.org/10.1016/S0024-3795(98)10162-3"
+    relationship: "background"
+    note: >-
+      Adjacent literature on Hadamard inverses of semidefinite matrices.
+      Statement 1 (a PSD matrix with no zero entry has PSD Hadamard
+      inverse iff it has rank one): Reams 1999 was identified by title
+      only (content not read) and may contain it; no novelty is claimed
+      for it.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Hadamard Semigroups of Off-Diagonal Constant Matrices"
+    authors:
+      - "Y. Lim"
+    id: "Journal of Lie Theory 30 (2020), no. 2, 473-488"
+    # Crossref-verified 2026-11-02: DOI 10.5802/jolt.1126. Journal page abstract only.
+    type: "article"
+    location: "https://doi.org/10.5802/jolt.1126"
+    relationship: "background"
+    note: >-
+      Treats the group of units of the Hadamard semigroup of positive
+      semidefinite matrices for off-diagonal-constant matrices; adjacent to
+      statement 1.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "The arithmetic and geometry of Salem numbers"
+    authors:
+      - "Eknath Ghate"
+      - "Eriko Hironaka"
+    id: "Bulletin of the American Mathematical Society 38 (2001), no. 3, 293-314"
+    # Crossref-verified 2026-11-02: DOI 10.1090/S0273-0979-01-00902-8; content: search excerpt only,
+    # not read.
+    type: "article"
+    location: "https://doi.org/10.1090/S0273-0979-01-00902-8"
+    relationship: "background"
+    note: >-
+      Salem numbers and Salem fields. A unit u != 1 of a field of signature
+      (2, 1) with a conjugate on the unit circle and positive real
+      conjugates is a Salem number or its inverse; statement 10 says the
+      units running both ways in degree four are exactly 1 and these.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Seventy years of Salem numbers"
+    authors:
+      - "Chris Smyth"
+    id: "Bulletin of the London Mathematical Society 47 (2015), no. 3, 379-395"
+    # Crossref-verified 2026-11-02: DOI 10.1112/blms/bdv027; text read (arXiv:1408.0195v3).
+    type: "article"
+    location: "https://doi.org/10.1112/blms/bdv027"
+    relationship: "background"
+    note: "Survey of Salem numbers; background for statement 10."
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Additive and multiplicative relations connecting conjugate algebraic numbers"
+    authors:
+      - "C. J. Smyth"
+    id: "Journal of Number Theory 23 (1986), no. 2, 243-254"
+    # Crossref-verified 2026-11-02: DOI 10.1016/0022-314X(86)90094-6. Metadata only.
+    type: "article"
+    location: "https://doi.org/10.1016/0022-314X(86)90094-6"
+    relationship: "background"
+    note: >-
+      Multiplicative relations among conjugates. Rank one of the symbol
+      (statement 6) is a system of such relations: the nine conjugates are
+      the entries w_i conj(w_j) of w w*.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Nonreciprocal units in a number field with an application to Oeljeklaus-Toma manifolds"
+    authors:
+      - "Artūras Dubickas"
+    id: "New York Journal of Mathematics 20 (2014), 257-274"
+    # Journal abstract page checked 2026-11-02 (NYJM 20-16); journal PDF read (Thms 1-2).
+    type: "article"
+    location: "https://nyjm.albany.edu/j/2014/20-16.html"
+    relationship: "background"
+    note: >-
+      Units of a field of degree s + 2t whose 2t complex conjugates have
+      equal modulus: a different conjugate pattern of the same kind
+      (complex moduli constrained by the field's structure). Statements 6-7
+      concern a different pattern: complex moduli fixed by the real
+      conjugates, |u(c_k)|^2 = u(r_i) u(r_j).
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Une caractérisation de certaines classes d'entiers algébriques généralisant les nombres de Salem"
+    authors:
+      - "Mohamed Kerada"
+    id: "Acta Arithmetica 72 (1995), no. 1, 55-65"
+    # Crossref-verified 2026-11-02: DOI 10.4064/aa-72-1-55-65; text read 2026-11-01.
+    type: "article"
+    location: "https://doi.org/10.4064/aa-72-1-55-65"
+    relationship: "background"
+    note: >-
+      Generalized (j-)Salem numbers: reciprocal algebraic integers with
+      conjugates on the unit circle. Distinct from the units u != 1 of
+      statements 6-9, which have no conjugate on the unit circle:
+      |u(c_k)|^2 = 1/u(r_k), and u(r_k) = 1 would force u = 1.
+    license: "unknown"
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "Registered entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum, registered revision 5aa870e98236ba240561b798265c629df8c2d031)"
+    relationship: "other"
+    note: >-
+      PROOF-MODULE REUSE, CITED. Its compared statement (3),
+      places_compositum, and the supporting declarations listed in
+      BUILD.txt (Module provenance; HermiteCompositum/Places.lean) are copied
+      into ReversibleUnits/Compositum.lean with the namespace and the
+      ambient field's name changed and every statement and proof otherwise
+      unchanged; each carries a docstring citing that entry. Statement 3
+      here applies places_compositum; it is not a re-comparison of it.
+  - id: "https://github.com/leanprover-community/mathlib4 (Matrix.PosSemidef, Matrix.vecMulVec, Algebra.norm, IntermediateField.LinearDisjoint, NumberField.InfinitePlace, NumberField.ComplexEmbedding, NumberField.Units.torsion, NumberField.Units.logEmbedding)"
+    relationship: "builds-on"
+    note: >-
+      The compared statements use Mathlib vocabulary plus four definitions
+      in Challenge.lean (IsPositiveMap, schurAmp, IsCPSchur,
+      IsSlotAssignment), repeated verbatim in Solution.lean.
+      DefinitionAudit.lean kernel-checks the facts the statements rely on.
+      Mathlib at the pin has no Schur-multiplier complete-positivity
+      criterion, no Salem predicate and no relative-norm product formula
+      for a compositum; the entry proves the latter from
+      Algebra.norm_eq_prod_embeddings.
+
+status:
+  scope: >-
+    Formalized: ten compared theorems, in comparator order, namespace
+    DegreeNine (see the description for their content). Proved in the
+    repository, not compared: the relative-norm product formula for a
+    linearly disjoint compositum (ReversibleUnits.map_norm_left,
+    map_norm_right), N_{K/L}(m) = N_{M/Q}(m) for m in M
+    (norm_algebraMap_right), the symbol's multiplicativity under the
+    Hadamard product (symbol_mul, symbol_inv), the explicit slot
+    assignment (slotEquiv) and the rank of H in the form finrank Z
+    (Additive H) = 2 (finrank_relNormKernel). Not formalized: the
+    converse (whether every field of signature (3, 3) with a nontrivial
+    rank-one unit is such a compositum); the shapes n >= 4 (degree n^2,
+    signature (n, n(n-1)/2)); any concrete field.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Anthropic Claude (Opus-class, 2026)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI-assisted proof drafting and error-loop iteration against lake
+        build, in parallel proving agents with disjoint files; the compared
+        statements were drafted with AI assistance at the author's request
+        and audited by an AI-assisted scope review before launch.
+      cost:
+        wall_time: "one session, 2026-11-02"
+        spend_usd: "subscription-based"
+        hardware: "local machine, Apple silicon"
+      prompting_notes: >-
+        The paper proof was drafted with AI assistance (a literature-check
+        session, 2026-11-01), re-derived by an AI-assisted audit, and checked
+        numerically on six composita at about 50 digits (exact by
+        integrality); the Lean statements follow it; proofs were iterated
+        against the compiler.
+    - method: "manual"
+      models: []
+      framework: "n/a"
+      tool_setup: >-
+        Author-directed scope (the question, the decision to formalize, and
+        acceptance of the entry for submission).
+      cost:
+        wall_time: "included in the session above"
+        spend_usd: "not tracked"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    Human-directed, machine-verified workflow: the author fixes statements
+    and reviews all mathematics; AI assistance drafts and repairs proofs;
+    the Lean kernel is the acceptance criterion.
+
+fidelity:
+  divergences: >-
+    (a) The hypotheses are inline: finrank Q L = 3, finrank Q M = 3,
+    finrank Q K = 9, IsTotallyReal L and nrRealPlaces M = 1; that L and M
+    are linearly disjoint and generate K is derived (statement 3), not
+    assumed. (b) The slot assignment enters as a predicate
+    (IsSlotAssignment) on a function Fin 3 x Fin 3 -> (K ->+* C), fixed by
+    the restrictions of each slot to L and to M; statement 4 proves it
+    exists, is a bijection, and is unique, so statements 5-9, which
+    quantify over every function satisfying it, are about one determined
+    array. (c) Rank one is spelled e (i, j) x = w i * conj (w j) in
+    statements 5-6 and X = vecMulVec w (star w) in statements 1-2; the
+    two are the same condition entrywise. (d) "Rank 2" in statement 7 is
+    the Z-rank of the span of the logarithmic embedding's image of H,
+    together with the absence of torsion in H; the library also proves
+    finrank Z (Additive H) = 2. (e) Complete positivity is the ampliation
+    form (every id_k ⊗ T_S positive), stated in full by IsCPSchur.
+    Mathlib's CompletelyPositiveMap (C⋆-algebra maps, through CStarMatrix)
+    is not used, because Matrix ι ι ℂ carries no C⋆-algebra order instance
+    at the pin; IsCPSchur states the same condition concretely, as
+    positivity of id_k ⊗ T_S on Matrix (Fin k × ι) (Fin k × ι) ℂ, the block
+    form of a k × k matrix with entries in Matrix ι ι ℂ; DefinitionAudit
+    proves it equivalent to S.PosSemidef. (f)
+    Statement 10's symbol is written out as the 2 x 2 matrix of the two
+    real conjugates and the complex one; the labelling of places is
+    arbitrary (any equivalences e₁, e₂). (g) The physical reading in the
+    README's application section is cited, not a theorem; no compared
+    statement asserts it. (h) Satisfiability of the hypotheses is not
+    kernel-checked; any totally real cubic L with M = Q(2^(1/3)) gives such
+    a K (computed, not in the package).
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Stephanie Alexander"
+  notes: >-
+    The axioms of every compared declaration were printed, the Challenge
+    and Solution statements were checked identical and the registry
+    comparator was run locally (BUILD.txt); an in-house adversarial review
+    (AI-assisted: Anthropic Claude, in Claude Code, under the author's
+    direction) was applied to the statements before proving and to this
+    surface before submission. PENDING: the author's own review of the
+    statements against the informal claims (to be recorded here before
+    submission).
+
+alignment:
+  namespace: "DegreeNine"
+  statements:
+    - source: "Elementary; adjacent to Reams 1999 and Lim 2020"
+      lean: "DegreeNine.hadamardInv_posSemidef_iff"
+      module: "Solution"
+      status: "proved"
+      note: "A PSD matrix with no zero entry has PSD Hadamard inverse iff it is w w*."
+    - source: "Statement 1 with Paulsen 2002, Thm 3.7"
+      lean: "DegreeNine.cp_both_iff_rankOne"
+      module: "Solution"
+      status: "proved"
+      note: "Both Schur multipliers completely positive iff rank one."
+    - source: "PALOMAR-2026-10-21-000012, statement (3), applied"
+      lean: "DegreeNine.compositum_setting"
+      module: "Solution"
+      status: "proved"
+      note: "L ⊔ M = K, linearly disjoint, signature (3, 3)."
+    - source: "This work"
+      lean: "DegreeNine.slot_assignment_exists_unique"
+      module: "Solution"
+      status: "proved"
+      note: "The slot assignment exists, is a Hermitian bijection, and is unique."
+    - source: "This work"
+      lean: "DegreeNine.rankOne_iff_relNorm_eq_ratCast"
+      module: "Solution"
+      status: "proved"
+      note: "Rank-one symbol of x != 0 iff equal positive rational relative norms."
+    - source: "This work"
+      lean: "DegreeNine.unit_rankOne_iff"
+      module: "Solution"
+      status: "proved"
+      note: "Rank-one symbol of a unit iff trivial relative norms to L and M."
+    - source: "This work"
+      lean: "DegreeNine.relNormKernel_torsionFree_rank_two"
+      module: "Solution"
+      status: "proved"
+      note: "The units of trivial relative norm form a torsion-free group of rank 2."
+    - source: "This work"
+      lean: "DegreeNine.reversible_iff"
+      module: "Solution"
+      status: "proved"
+      note: "Both-way complete positivity iff trivial relative norms."
+    - source: "This work"
+      lean: "DegreeNine.exists_reversible"
+      module: "Solution"
+      status: "proved"
+      note: "A unit of infinite order all of whose powers run both ways."
+    - source: "This work, from Paulsen 2002 Thm 3.7 at the places of a (2, 1) field; ‖σ(u)‖ = 1 is the Salem case"
+      lean: "DegreeNine.quartic_reversible_iff"
+      module: "Solution"
+      status: "proved"
+      note: "Degree four: both ways iff positive at the real places and |sigma(u)| = 1."
+
+acknowledgements: >-
+  Built on Mathlib and the Lean 4 toolchain; thanks to the leanprover
+  community. Developed with AI assistance (Anthropic Claude, in Claude
+  Code) under the author's direction.

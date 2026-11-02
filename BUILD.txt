@@ -1,0 +1,82 @@
+reversible-units-degree-nine -- kernel build record, 2026-11-02
+Toolchain: leanprover/lean4:v4.35.0-rc2
+Mathlib rev: 065356127b1dc0016f66b7283ce0ce2c4055aa55
+
+Build: lake build (defaultTargets ReversibleUnits, Challenge, Solution, DefinitionAudit) -> Build completed
+  successfully (8942 jobs), exit 0. Only warnings: the 10 'declaration uses sorry' warnings of Challenge.lean
+  (the compared placeholders). A fresh copy (no .lake) also builds, exit 0, compiling every project module
+  from source. No sorry, admit, native_decide or axiom declaration outside Challenge.lean.
+
+#print axioms (lake env lean on a check file importing Solution):
+  'DegreeNine.hadamardInv_posSemidef_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.cp_both_iff_rankOne' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.compositum_setting' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.slot_assignment_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.rankOne_iff_relNorm_eq_ratCast' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.unit_rankOne_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.relNormKernel_torsionFree_rank_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.reversible_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.exists_reversible' depends on axioms: [propext, Classical.choice, Quot.sound]
+  'DegreeNine.quartic_reversible_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+  Library: all 91 declarations of ReversibleUnits.Compositum and ReversibleUnits.Reversible, all 38 of
+  ReversibleUnits.HadamardInverse and ReversibleUnits.NTwo, and the DefinitionAudit theorems: the same three
+  axioms only.
+
+Statement identity, Challenge vs Solution (10 theorems + 4 definitions: IsPositiveMap, schurAmp, IsCPSchur,
+IsSlotAssignment)
+  Whitespace-normalised source text (comments stripped; theorem statements up to `:=`, definitions in full):
+    14/14 identical; declaration docstrings 14/14 identical; `open` lines identical; declaration order = the
+    comparator order.
+  Kernel terms: the 16 public DegreeNine constants of a file importing only Challenge and of one importing
+    only Solution (the 10 theorems, the 4 definitions, and the generated IsSlotAssignment._proof_1/_proof_2)
+    are identical in type, value, hints and safety, once the module name inside hygienic binder names is
+    normalised.
+  Count gate: the Challenge docstring says "exactly these ten statements" and enumerates 1-10; comparator.json
+    has 10 theorem_names in that order; Challenge.lean has 10 theorems, declared in that order;
+    definition_names = the 4 definitions of Challenge.lean; formalization.yaml alignment lists the same 10
+    names in the same order. The word "sorry" occurs in Challenge.lean exactly 10 times (the placeholders).
+
+Comparator
+  lake comparator --inadvisably-no-sandbox (toolchain bin with nanoda_bin on PATH), from the package root:
+    "nanoda kernel accepts the solution / Lean default kernel accepts the solution / Your solution is okay!",
+    exit 0 (re-run 2026-11-02 after the last docstring edits to Challenge.lean, HadamardInverse.lean and
+    NTwo.lean; docstring-only changes, no statement or proof changed).
+  Registry stages replicated on a fresh copy: Challenge compiled under a canonical alias (10 sorry warnings,
+    0 errors); --src-deps: 3 sources (mathlib 1, toolchain 2), none untrusted; leanexport on 47 targets;
+    submitted config accepted, exit 0; protected config "con-ron: accepted 68793 declarations (--verified) /
+    con-ron, nanoda and Lean default kernels accept / Your solution is okay!", exit 0.
+  Not run: the registry's verify_submission.py target selection (not on this machine); no bubblewrap sandbox
+    on macOS (hence --inadvisably-no-sandbox).
+  The author's entry checker (count gate, surface agreement): no failures.
+
+Module provenance
+  ReversibleUnits/Compositum.lean, section Ported: restrictPair, restrictPair_injective,
+    restrictPair_surjective, embeddingsEquiv, isReal_iff_restrictPair, card_real_embeddings_compositum,
+    finrank_compositum, nrRealPlaces_compositum, nrRealPlaces_mul_add_two_mul_nrComplexPlaces_compositum,
+    two_mul_nrComplexPlaces_compositum, places_compositum and the helpers toSubalgebra_sup_eq_top,
+    compositumAlgEquiv, compositumAlgEquiv_tmul: copied from HermiteCompositum/Places.lean of the registered
+    entry PALOMAR-2026-10-21-000012 (stalex444/pdt-hermite-signature-compositum at
+    5aa870e98236ba240561b798265c629df8c2d031); only the namespace and the ambient field's name (L -> K)
+    changed; each carries a docstring citing that entry. The rest of Compositum.lean is new.
+  ReversibleUnits/HadamardInverse.lean: the Schur-multiplier block (schurMul ... isCPSchur_iff_posSemidef,
+    norm_sq_le_mul_re_diag_of_posSemidef) is ported from the author's unpublished working package
+    (HermitianExclusion/UnitSchur.lean, section Schur; reproduced here in full) with the namespace changed; the Hadamard-inverse
+    lemmas are new.
+  ReversibleUnits/NTwo.lean: placeMatrix, placeMatrix_isHermitian, placeMatrix_posSemidef_iff,
+    posMap_iff_norm_le_one, one_direction_xor, prod_places_two, unit_one_direction_xor ported from the same
+    working package (UnitSchur.lean, CPTick.lean); quarticSymbol, quarticSymbol_inv,
+    hadamardInv_placeMatrix, both_posMap_iff_norm_eq_one, unit_both_cp_iff, unit_both_cp_iff_rankOne new.
+  ReversibleUnits/Reversible.lean, Solution.lean, DefinitionAudit.lean, Challenge.lean: written for this
+    entry.
+
+Files (sha256)
+  f127257ded0b9248a5e7b4527d0b7a14c8eec34f9ecace5479eefd21c69b05ce  Challenge.lean
+  8fdae28e79d9eab4f0abfaf9163835fbb48a8045ee8a8411608011b7c2e58792  Solution.lean
+  40c6a007c76b7ee2659691b3ff44b305355cce704cd2e49e134a454649d34ccb  DefinitionAudit.lean
+  5769f6ec4422d7b8cdb10d7a95b0c4aa2846a850e3810403a3c2a46121ef1f5b  ReversibleUnits.lean
+  04b0a7190d4014f9f6ed4dc5fc70490fc08d2ca6cd86432813dd5afb9a6c358b  ReversibleUnits/Compositum.lean
+  3142e4e443018e8d0ba68d222045a065b924e0e5f24962b1054330555cf154c5  ReversibleUnits/HadamardInverse.lean
+  a2e6f7919f7c3122f69c8d6ceed150ccadbca46ff2dda64d7b1c63e2d90c09e9  ReversibleUnits/NTwo.lean
+  f8bb1e93cf42f4e982e67af71b63395e36b4ef8d68061e67c05495593ba00a3b  ReversibleUnits/Reversible.lean
+  b1d9ffe73943544e9ccd486d3aaedec8c4f85c9d7fef732ebaa8baf08ca7a9fc  comparator.json
+  (README.md and formalization.yaml are hashed at commit time; see git.)

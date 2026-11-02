@@ -1,0 +1,24 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "DegreeNine.hadamardInv_posSemidef_iff",
+    "DegreeNine.cp_both_iff_rankOne",
+    "DegreeNine.compositum_setting",
+    "DegreeNine.slot_assignment_exists_unique",
+    "DegreeNine.rankOne_iff_relNorm_eq_ratCast",
+    "DegreeNine.unit_rankOne_iff",
+    "DegreeNine.relNormKernel_torsionFree_rank_two",
+    "DegreeNine.reversible_iff",
+    "DegreeNine.exists_reversible",
+    "DegreeNine.quartic_reversible_iff"
+  ],
+  "definition_names": [
+    "DegreeNine.IsPositiveMap",
+    "DegreeNine.schurAmp",
+    "DegreeNine.IsCPSchur",
+    "DegreeNine.IsSlotAssignment"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}
